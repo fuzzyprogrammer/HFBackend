@@ -29,10 +29,11 @@ class AuthController extends Controller
         if (!$token = Auth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
         $data = [
             "accessToken" => $token,
             "user" => Auth::user(),
+            "role" => Auth::user()->role->name,
+            "jamath" => Auth::user()->jamath->name,
         ];
         // return $this->respondWithToken($token);
         return response()->json($data);
@@ -45,7 +46,12 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(Auth::user());
+        $data = [
+            'user'=>Auth::user(),
+            'role'=> Auth::user()->role->name,
+            "jamath" => Auth::user()->jamath->name,
+        ];
+        return response()->json($data);
     }
 
     /**

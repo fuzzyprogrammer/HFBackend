@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\JamathController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +38,7 @@ Route::group([
     }
 );
 
+// resource api's
+Route::apiResource('role', RolesController::class );
+Route::apiResource('users', UsersController::class );
+Route::apiResource('jamaths', JamathController::class );

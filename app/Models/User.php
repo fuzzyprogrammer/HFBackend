@@ -17,11 +17,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -50,5 +46,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Roles::class, 'id', 'role_id');
+    }
+
+    public function jamath()
+    {
+        return $this->belongsTo(Jamath::class);
     }
 }
