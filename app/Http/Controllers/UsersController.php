@@ -15,15 +15,13 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        $data = [
             $users->map(function($user){
                 return [
                     $user,
                     $user->jamath,
                     $user->role,
                 ];
-            })
-        ];
+            });
 
         return response()->json($users);
     }
