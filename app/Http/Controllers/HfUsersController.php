@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\HfUser;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class HfUsersController extends Controller
 {
-    public function __construct(User $user)
+    public function __construct(HfUser $hfUser)
     {
         $this->middleware('auth:api', /*['except' => ['login']]*/);
-        $this->User = $user;
+        $this->HfUser = $hfUser;
     }
     /**
      * Display a listing of the resource.
@@ -24,14 +24,14 @@ class UsersController extends Controller
     public function index()
     {
         $userId = auth()->user()->id;
-        if($userId ==1){
-            $users = User::all();
-            $data = $this->User->getUsers($users);
+        if ($userId == 1) {
+            $users = HfUser::all();
+            $data = $this->HfUser->getUsers($users);
 
             return response()->json($data, 200);
         }
-        $users = User::where('parent_id',$userId)->get();
-        $data = $this->User->getUsers($users);
+        $users = HfUser::where('parent_id', $userId)->get();
+        $data = $this->HfUser->getUsers($users);
 
 
         return response()->json($data, 200);
@@ -50,23 +50,23 @@ class UsersController extends Controller
         $data['remember_token'] = null;
         $data['parent_id'] = auth()->user()->id;
         // return response($data);
-        $user = User::create($data);
+        $hfUser = HfUser::create($data);
 
-        return response($user);
+        return response($hfUser);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\HfUser  $hfUser
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(HfUser $hfUser)
     {
         $data = [
-            $user,
-            $user->jamath,
-            $user->role,
+            $hfUser,
+            $hfUser->jamath,
+            $hfUser->role,
         ];
         return response()->json($data);
     }
@@ -75,23 +75,23 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\HfUser  $hfUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, HfUser $hfUser)
     {
-        $user->update($request->all());
+        $hfUser->update($request->all());
 
-        return response()->json($user);
+        return response()->json($hfUser);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\HfUser  $hfUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(HfUser $hfUser)
     {
         //
     }

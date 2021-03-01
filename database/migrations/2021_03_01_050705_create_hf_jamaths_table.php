@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJamathsTable extends Migration
+class CreateHfJamathsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateJamathsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jamaths', function (Blueprint $table) {
+        Schema::create('hf_jamaths', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('address_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('created_by_id')->nullable();
             $table->string('name')->nullable();
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ class CreateJamathsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jamaths');
+        Schema::dropIfExists('hf_jamaths');
     }
 }

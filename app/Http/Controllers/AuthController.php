@@ -25,15 +25,14 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-
-        if (!$token = Auth::attempt($credentials)) {
+        if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         $data = [
             "accessToken" => $token,
-            "user" => Auth::user(),
-            "role" => Auth::user()->role->name,
-            "jamath" => Auth::user()->jamath->name,
+            "user" => auth()->user(),
+            "role" => auth()->user()->role->name,
+            "jamath" => auth()->user()->jamath->name,
         ];
         // return $this->respondWithToken($token);
         return response()->json($data);
@@ -47,9 +46,9 @@ class AuthController extends Controller
     public function me()
     {
         $data = [
-            'user'=>Auth::user(),
-            'role'=> Auth::user()->role->name,
-            "jamath" => Auth::user()->jamath->name,
+            'user'=>auth()->user(),
+            'role'=> auth()->user()->role->name,
+            "jamath" => auth()->user()->jamath->name,
         ];
         return response()->json($data);
     }
@@ -61,7 +60,8 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        Auth::logout();
+        // auth()->logout();
+        auth()->refresh();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -73,7 +73,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(Auth::refresh());
+        return $this->respondWithToken(auth()->refresh());
     }
 
     /**
@@ -88,7 +88,7 @@ class AuthController extends Controller
         return response()->json([
             'accessToken' => $token,
             'token_type' => 'bearer',
-            'expires_in' => Auth::factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
 }
