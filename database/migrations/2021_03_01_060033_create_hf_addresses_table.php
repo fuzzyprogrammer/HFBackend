@@ -16,6 +16,11 @@ class CreateHfAddressesTable extends Migration
         Schema::create('hf_addresses', function (Blueprint $table) {
             $table->id();
             $table->string('street')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('pincode')->nullable();
+            $table->string('country')->nullable();
             $table->timestamps();
         });
     }

@@ -9,6 +9,8 @@ class HfAddress extends Model
 {
     use HasFactory;
 
+    protected $guarded=[];
+
     public function jamath()
     {
         return $this->belongsTo(HfJamath::class);

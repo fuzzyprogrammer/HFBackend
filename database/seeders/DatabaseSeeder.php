@@ -73,5 +73,64 @@ class DatabaseSeeder extends Seeder
         \App\Models\HfAddress::create([
             'street' => 'street2'
         ]);
+
+        // Contact types
+        \App\Models\HfContactType::create([
+            'name'=>'Contact No.'
+        ]);
+        \App\Models\HfContactType::create([
+            'name'=>'Email'
+        ]);
+        \App\Models\HfContactType::create([
+            'name'=>'Web'
+        ]);
+
+        //  Shelter Types
+        \App\Models\HfShelter::create([
+            'name' => 'Single-family Home'
+        ]);
+        \App\Models\HfShelter::create([
+            'name' => 'Multifamily Home'
+        ]);
+        \App\Models\HfShelter::create([
+            'name' => 'Apartment'
+        ]);
+        \App\Models\HfShelter::create([
+            'name' => 'Townhouses'
+        ]);
+        \App\Models\HfShelter::create([
+            'name' => 'Tiny Home '
+        ]);
+        \App\Models\HfShelter::create([
+            'name' => 'Traditional House'
+        ]);
+
+        // Languages
+        \App\Models\HfLanguage::create([
+            'name' => 'English'
+        ]);
+        \App\Models\HfLanguage::create([
+            'name' => 'Hindi'
+        ]);
+        \App\Models\HfLanguage::create([
+            'name' => 'Urdu'
+        ]);
+        \App\Models\HfLanguage::create([
+            'name' => 'Kannada'
+        ]);
+        \App\Models\HfLanguage::create([
+            'name' => 'Tulu'
+        ]);
+
+        // Religions
+        \App\Models\HfReligion::create([
+            'name' => 'Islam'
+        ]);
+        \App\Models\HfReligion::create([
+            'name' => 'Hinduism'
+        ]);
+        \App\Models\HfReligion::create([
+            'name' => 'Christianity'
+        ]);
     }
 }

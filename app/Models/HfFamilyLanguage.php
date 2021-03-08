@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HfFamily extends Model
+class HfFamilyLanguage extends Model
 {
     use HasFactory;
 
