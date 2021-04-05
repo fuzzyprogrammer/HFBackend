@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://phplaravel-310793-951903.cloudwaysapps.com/jamath'),
 
     'asset_url' => env('ASSET_URL', null),
 
