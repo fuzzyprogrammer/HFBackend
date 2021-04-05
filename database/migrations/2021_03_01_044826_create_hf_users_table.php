@@ -19,7 +19,7 @@ class CreateHfUsersTable extends Migration
             $table->unsignedBigInteger('jamath_id')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email',191)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
