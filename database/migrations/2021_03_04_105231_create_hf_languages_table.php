@@ -15,7 +15,7 @@ class CreateHfLanguagesTable extends Migration
     {
         Schema::create('hf_languages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }

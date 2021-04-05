@@ -8,9 +8,14 @@ use App\Http\Controllers\HfUsersController;
 use App\Http\Controllers\HfJamathController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HfContactTypeController;
+use App\Http\Controllers\HfFamilyController;
+use App\Http\Controllers\HfFamilyMemberAcademyMajorController;
+use App\Http\Controllers\HfFamilyMemberController;
+use App\Http\Controllers\HfFamilyReportController;
 use App\Http\Controllers\HfLanguageController;
 use App\Http\Controllers\HfReligionController;
 use App\Http\Controllers\HfShelterController;
+use App\Http\Controllers\MixController;
 use App\Http\Controllers\RationCardTypeController;
 
 /*
@@ -52,9 +57,14 @@ Route::apiResource('hfContactTypes', HfContactTypeController::class );
 Route::apiResource('hfShelters', HfShelterController::class );
 Route::apiResource('hfLanguages', HfLanguageController::class );
 Route::apiResource('hfReligions', HfReligionController::class );
-
+Route::apiResource('hffamilies', HfFamilyController::class);
+Route::apiResource('family-members', HfFamilyMemberController::class);
+Route::apiResource('family-reports',HfFamilyReportController::class);
+Route::apiResource('hfAcademy-majors', HfFamilyMemberAcademyMajorController::class);
 
 // api's
 Route::post('upload', [FileUploadController::class, 'upload'] );
 Route::get('files', [FileUploadController::class, 'files'] );
-Route::get('rationCardTypes', [RationCardTypeController::class, 'index'] );
+Route::get('rationCardTypes', [RationCardTypeController::class, 'index']);
+Route::get('shelterTypes', [MixController::class, 'shelterTypeList']);
+Route::get('shelterOwnerships', [MixController::class, 'shelterOwnershipList']);

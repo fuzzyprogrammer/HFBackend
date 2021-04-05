@@ -15,6 +15,8 @@ class CreateHfContactsTable extends Migration
     {
         Schema::create('hf_contacts', function (Blueprint $table) {
             $table->id();
+            $table->string('contact_type')->nullable();
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }

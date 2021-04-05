@@ -25,14 +25,15 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-        if (!$token = auth()->attempt($credentials)) {
+        
+        if (!$token = Auth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         $data = [
             "accessToken" => $token,
-            "user" => auth()->user(),
-            "role" => auth()->user()->role->name,
-            "jamath" => auth()->user()->jamath->name,
+            "user" => Auth::user(),
+            "role" => Auth::user()->role->name,
+            "jamath" => Auth::user()->jamath->name,
         ];
         // return $this->respondWithToken($token);
         return response()->json($data);
@@ -46,9 +47,9 @@ class AuthController extends Controller
     public function me()
     {
         $data = [
-            'user'=>auth()->user(),
-            'role'=> auth()->user()->role->name,
-            "jamath" => auth()->user()->jamath->name,
+            'user'=>Auth::user(),
+            'role'=> Auth::user()->role->name,
+            "jamath" => Auth::user()->jamath->name,
         ];
         return response()->json($data);
     }
@@ -60,8 +61,8 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        // auth()->logout();
-        auth()->refresh();
+        // Auth::logout();
+        Auth::refresh();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -73,7 +74,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(Auth::refresh());
     }
 
     /**
@@ -88,7 +89,7 @@ class AuthController extends Controller
         return response()->json([
             'accessToken' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => Auth::factory()->getTTL() * 60
         ]);
     }
 }

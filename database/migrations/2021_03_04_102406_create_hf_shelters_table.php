@@ -15,7 +15,10 @@ class CreateHfSheltersTable extends Migration
     {
         Schema::create('hf_shelters', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('ownership')->nullable();
+            $table->string('type')->nullable();
+            $table->string('support_required')->nullable();
+            $table->unsignedBigInteger('family_id')->nullable();
             $table->timestamps();
         });
     }

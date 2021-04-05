@@ -10,4 +10,9 @@ class HfShelter extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function family()
+    {
+        return $this->belongsTo(HfFamily::class);
+    }
 }

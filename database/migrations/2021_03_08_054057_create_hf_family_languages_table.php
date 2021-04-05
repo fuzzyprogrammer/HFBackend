@@ -15,8 +15,8 @@ class CreateHfFamilyLanguagesTable extends Migration
     {
         Schema::create('hf_family_languages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('language_id');
-            $table->unsignedInteger('family_id');
+            $table->unsignedInteger('language_id')->nullable();
+            $table->unsignedInteger('family_id')->nullable();
             $table->timestamps();
         });
     }

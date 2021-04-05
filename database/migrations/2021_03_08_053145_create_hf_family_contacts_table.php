@@ -15,8 +15,8 @@ class CreateHfFamilyContactsTable extends Migration
     {
         Schema::create('hf_family_contacts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('contact_id');
-            $table->unsignedBigInteger('family_id');
+            $table->unsignedBigInteger('contact_id')->nullable();
+            $table->unsignedBigInteger('family_id')->nullable();
             $table->timestamps();
         });
     }

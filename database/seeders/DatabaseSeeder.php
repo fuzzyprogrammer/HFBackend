@@ -81,28 +81,43 @@ class DatabaseSeeder extends Seeder
         \App\Models\HfContactType::create([
             'name'=>'Email'
         ]);
-        \App\Models\HfContactType::create([
-            'name'=>'Web'
-        ]);
+
 
         //  Shelter Types
-        \App\Models\HfShelter::create([
-            'name' => 'Single-family Home'
+        \App\Models\HfShelterType::create([
+            'name' => 'Kaccha House'
         ]);
-        \App\Models\HfShelter::create([
-            'name' => 'Multifamily Home'
+        \App\Models\HfShelterType::create([
+            'name' => 'Pucca House'
         ]);
-        \App\Models\HfShelter::create([
+        \App\Models\HfShelterType::create([
+            'name' => 'RCC'
+        ]);
+        \App\Models\HfShelterType::create([
             'name' => 'Apartment'
         ]);
-        \App\Models\HfShelter::create([
-            'name' => 'Townhouses'
+        \App\Models\HfShelterType::create([
+            'name' => 'Villa'
         ]);
-        \App\Models\HfShelter::create([
-            'name' => 'Tiny Home '
+        \App\Models\HfShelterType::create([
+            'name' => 'Other'
         ]);
-        \App\Models\HfShelter::create([
-            'name' => 'Traditional House'
+
+        // Shelter Ownership
+        \App\Models\HfShelterOwnership::create([
+            'name' => 'Ownership'
+        ]);
+        \App\Models\HfShelterOwnership::create([
+            'name' => 'Rented'
+        ]);
+        \App\Models\HfShelterOwnership::create([
+            'name' => 'Lease'
+        ]);
+        \App\Models\HfShelterOwnership::create([
+            'name' => 'Free'
+        ]);
+        \App\Models\HfShelterOwnership::create([
+            'name' => 'Other'
         ]);
 
         // Languages
@@ -132,5 +147,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\HfReligion::create([
             'name' => 'Christianity'
         ]);
+
+        $majors = ['General','Science','Commerce','Arts','Music','Computer Science'];
+        foreach($majors as $major){
+            \App\Models\HfFamilyMemberAcademyMajor::create([
+                'name' => $major
+            ]);
+        }
     }
 }

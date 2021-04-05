@@ -37,8 +37,6 @@ class HfJamathController extends Controller
     public function store(Request $request)
     {
         $data = $request->json()->all();
-        $data['created_by_id']=auth()->user()->id;
-
 
         $hfJamath = HfJamath::create($data);
 

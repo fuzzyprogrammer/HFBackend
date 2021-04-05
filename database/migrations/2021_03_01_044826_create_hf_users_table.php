@@ -15,7 +15,7 @@ class CreateHfUsersTable extends Migration
     {
         Schema::create('hf_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->unsignedBigInteger('jamath_id')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('name');

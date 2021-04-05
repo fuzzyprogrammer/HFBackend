@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
+use App\Models\HfOccupationDetail;
 use Illuminate\Http\Request;
 
-class AddressController extends Controller
+class HfOccupationDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\HfOccupationDetail  $hfOccupationDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(Address $address)
+    public function show(HfOccupationDetail $hfOccupationDetail)
     {
         //
     }
@@ -43,10 +43,10 @@ class AddressController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\HfOccupationDetail  $hfOccupationDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Address $address)
+    public function update(Request $request, HfOccupationDetail $hfOccupationDetail)
     {
         //
     }
@@ -54,10 +54,10 @@ class AddressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\HfOccupationDetail  $hfOccupationDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Address $address)
+    public function destroy(HfOccupationDetail $hfOccupationDetail)
     {
         //
     }

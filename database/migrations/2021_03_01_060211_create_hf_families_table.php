@@ -18,10 +18,8 @@ class CreateHfFamiliesTable extends Migration
             $table->string('family_code')->nullable();
             $table->string('name')->nullable();
             $table->unsignedBigInteger('family_address_id')->nullable();
-            $table->unsignedBigInteger('family_contact_id')->nullable();
             $table->string('religion')->nullable();
-            $table->unsignedBigInteger('family_language_id')->nullable();
-            $table->unsignedBigInteger('shelter_id')->nullable();
+            $table->string('language')->nullable();
             $table->string('ration_card_type')->nullable();
             $table->string('ration_card_no')->nullable();
             $table->string('ration_img_url')->nullable();

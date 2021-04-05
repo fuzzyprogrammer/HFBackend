@@ -15,4 +15,9 @@ class HfAddress extends Model
     {
         return $this->belongsTo(HfJamath::class);
     }
+
+    public function familyAddress()
+    {
+        return $this->belongsTo(HfFamilyAddress::class);
+    }
 }

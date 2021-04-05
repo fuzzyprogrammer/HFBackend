@@ -15,8 +15,8 @@ class CreateHfFamilyAddressesTable extends Migration
     {
         Schema::create('hf_family_addresses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('family_id');
-            $table->unsignedInteger('address_id');
+            $table->unsignedInteger('family_id')->nullable();
+            $table->unsignedInteger('address_id')->nullable();
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class CreateHfRolesTable extends Migration
     {
         Schema::create('hf_roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
