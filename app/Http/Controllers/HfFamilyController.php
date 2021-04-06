@@ -20,7 +20,7 @@ class HfFamilyController extends Controller
 
     public function __construct()
     {
-
+        $this->middleware('auth:api');
     }
     /**
      * Display a listing of the resource.
@@ -51,7 +51,7 @@ class HfFamilyController extends Controller
         $families = HfFamily::all();
         $families->map(function($family){
             $family['imgUrl'] = url($family->ration_img_url);
-            $family['street'] = $family->currentFamilyAddress->address->street;
+            $family->currentFamilyAddress && $family['street'] = $family->currentFamilyAddress->address->street;
             $family['members'] = $family->familyMember->count();
             return [
                 $family,
@@ -89,6 +89,7 @@ class HfFamilyController extends Controller
             'income'=>$request->income,
             'income_source'=>$request->income_source,
             'user_id'=>$request->user_id,
+            'language'=>$request->language
         ]);
 
         $familyAddress = HfFamilyAddress::create([
@@ -141,10 +142,7 @@ class HfFamilyController extends Controller
             ]);
         }
 
-        $familyLanguageId = HfFamilyLanguage::create([
-            'language_id'=>$request->language_id,
-            'family_id' => $family->id,
-        ]);
+
 
 
 
@@ -154,7 +152,6 @@ class HfFamilyController extends Controller
 
         $family->update([
             'family_address_id' => $familyAddress->id,
-            'family_language_id' => $familyLanguageId->id,
             'ration_img_url' => $path,
         ]);
 

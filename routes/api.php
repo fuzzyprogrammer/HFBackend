@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalyticController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -68,3 +69,4 @@ Route::get('files', [FileUploadController::class, 'files'] );
 Route::get('rationCardTypes', [RationCardTypeController::class, 'index']);
 Route::get('shelterTypes', [MixController::class, 'shelterTypeList']);
 Route::get('shelterOwnerships', [MixController::class, 'shelterOwnershipList']);
+Route::post('analytics',[AnalyticController::class, 'dashboard']);
