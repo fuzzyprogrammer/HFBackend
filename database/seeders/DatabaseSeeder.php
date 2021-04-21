@@ -50,12 +50,16 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\HfRole::create([
             'name' => 'ADMIN',
+            'parent_id' => 1,
         ]);
         \App\Models\HfRole::create([
             'name' => 'EDITOR',
+            'parent_id' => 1,
+
         ]);
         \App\Models\HfRole::create([
             'name' => 'GUEST',
+            'parent_id' => 1,
         ]);
 
         \App\Models\HfJamath::create([

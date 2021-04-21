@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\HfUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class HfUsersController extends Controller
 {
@@ -25,7 +27,7 @@ class HfUsersController extends Controller
     {
         $userId = auth()->user()->id;
         if ($userId == 1) {
-            $users = HfUser::all();
+            $users = HfUser::where('parent_id', $userId)->get();
             $data = $this->HfUser->getUsers($users);
 
             return response()->json($data, 200);
@@ -47,8 +49,8 @@ class HfUsersController extends Controller
     {
         $data = $request->all();
         $data['password'] = bcrypt($request->email);
-        $data['remember_token'] = null;
-        $data['parent_id'] = auth()->user()->id;
+        $data['remember_token'] = Str::random(10);
+        $data['parent_id'] = $request->parent_id;
         // return response($data);
         $hfUser = HfUser::create($data);
 
@@ -94,5 +96,14 @@ class HfUsersController extends Controller
     public function destroy(HfUser $hfUser)
     {
         //
+    }
+
+    public function userList($id)
+    {
+        $users = HfUser::where('parent_id', $id)->get();
+        if($users){
+            return response()->json($users);
+        }
+        return response()->json(['msg'=>"There is no users"], 500);
     }
 }

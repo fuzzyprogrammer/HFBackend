@@ -19,6 +19,7 @@ class CreateHfJamathsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('created_by_id')->nullable();
             $table->string('name')->nullable();
+            $table->unsignedBigInteger('taluk_id')->nullable();
             $table->timestamps();
         });
     }

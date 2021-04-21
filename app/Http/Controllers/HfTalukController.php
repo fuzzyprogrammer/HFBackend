@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HfRole;
+use App\Models\HfTaluk;
 use Illuminate\Http\Request;
 
-class HfRolesController extends Controller
+class HfTalukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +14,7 @@ class HfRolesController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        if($user->role->id == '1'){
-            $hfRoles = HfRole::all();
-            return response()->json($hfRoles);
-        }else{
-            $hfRoles = HfRole::where('parent_id',$user->role->id)->get();
-            if($hfRoles){
-                return response()->json($hfRoles);
-            }
-            return response()->json(['msg'=>"No Role Assign Access"]);
-
-        }
+        //
     }
 
     /**
@@ -36,39 +25,49 @@ class HfRolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $taluk = HfTaluk::create(["name" => $request->name, "district_id" => $request->districtId]);
+
+        return response()->json($taluk);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HfRole  $hfRole
+     * @param  \App\Models\HfTaluk  $taluk
      * @return \Illuminate\Http\Response
      */
-    public function show(HfRole $hfRole)
+    public function show(HfTaluk $taluk)
     {
+        if ($taluk) {
+            return response()->json($taluk);
+        }
+        return response()->json(['msg' => "No district is available"], 500);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HfRole  $hfRole
+     * @param  \App\Models\HfTaluk  $taluk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HfRole $hfRole)
+    public function update(Request $request, HfTaluk $taluk)
     {
-        //
+        $taluk->update($request->all());
+
+        return response()->json($taluk);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HfRole  $hfRole
+     * @param  \App\Models\HfTaluk  $taluk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HfRole $hfRole)
+    public function destroy(HfTaluk $taluk)
     {
-        //
+        $taluk->delete();
+
+        return response()->json(['msg' => "Successfully Deleted"]);
     }
 }

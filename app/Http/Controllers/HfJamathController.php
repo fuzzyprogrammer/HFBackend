@@ -37,6 +37,7 @@ class HfJamathController extends Controller
     public function store(Request $request)
     {
         $data = $request->json()->all();
+        
 
         $hfJamath = HfJamath::create($data);
 
@@ -84,5 +85,14 @@ class HfJamathController extends Controller
     public function destroy(HfJamath $hfJamath)
     {
         //
+    }
+
+    public function jamaths($id)
+    {
+        $allJamaths = HfJamath::where('taluk_id', $id)->get();
+        if ($allJamaths) {
+            return response()->json($allJamaths);
+        }
+        return response()->json(['msg' => "There is no entry of Jamaths for this Taluk"], 500);
     }
 }

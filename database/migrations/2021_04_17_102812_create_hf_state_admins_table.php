@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHfRolesTable extends Migration
+class CreateHfStateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateHfRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hf_roles', function (Blueprint $table) {
+        Schema::create('hf_state_admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('parent_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('state_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateHfRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hf_roles');
+        Schema::dropIfExists('hf_state_admins');
     }
 }

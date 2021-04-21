@@ -30,4 +30,9 @@ class HfJamath extends Model
         ];
     }
 
+    public function accessDenied()
+    {
+        return $this->hasMany(Denied::class,'jamath_id', 'id');
+    }
+
 }

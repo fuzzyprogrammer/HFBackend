@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HfRole;
+use App\Models\HfTalukAdmin;
 use Illuminate\Http\Request;
 
-class HfRolesController extends Controller
+class HfTalukAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +14,7 @@ class HfRolesController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        if($user->role->id == '1'){
-            $hfRoles = HfRole::all();
-            return response()->json($hfRoles);
-        }else{
-            $hfRoles = HfRole::where('parent_id',$user->role->id)->get();
-            if($hfRoles){
-                return response()->json($hfRoles);
-            }
-            return response()->json(['msg'=>"No Role Assign Access"]);
-
-        }
+        //
     }
 
     /**
@@ -42,21 +31,22 @@ class HfRolesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HfRole  $hfRole
+     * @param  \App\Models\HfTalukAdmin  $hfTalukAdmin
      * @return \Illuminate\Http\Response
      */
-    public function show(HfRole $hfRole)
+    public function show(HfTalukAdmin $hfTalukAdmin)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HfRole  $hfRole
+     * @param  \App\Models\HfTalukAdmin  $hfTalukAdmin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HfRole $hfRole)
+    public function update(Request $request, HfTalukAdmin $hfTalukAdmin)
     {
         //
     }
@@ -64,10 +54,10 @@ class HfRolesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HfRole  $hfRole
+     * @param  \App\Models\HfTalukAdmin  $hfTalukAdmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HfRole $hfRole)
+    public function destroy(HfTalukAdmin $hfTalukAdmin)
     {
         //
     }
